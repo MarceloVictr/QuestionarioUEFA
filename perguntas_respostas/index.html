@@ -1,0 +1,198 @@
+<html>
+    <head>
+        <style>
+            body{
+                border: 0;
+                margin: 0;
+                background-image: url("download (1).jfif");
+                
+                
+            }
+            h1{
+                font-size: 30px;
+                text-align: center;
+            }
+            h2{
+                font-size: 35px;
+                text-align: center;
+                background-color: black;
+                color: rgb(0, 140, 255);
+                padding: 20px;
+            }
+            .resposta{
+                text-align: center;
+            }
+            .tudo{
+                
+                background-color: rgba(255, 255, 255, 0.582);
+                margin: auto;
+                border-radius: 25px;
+                max-width: 700px;
+                padding: 10px;
+                
+            }
+
+
+        </style>
+        <title>Perguntas & Respostas</title>
+    </head>
+    <body>
+        <h2>Questionario sobre a UEFA Champions League!</h2>
+        
+
+        <div class="tudo">
+            
+            <div class="title">
+                <h1>Qual o maior campeão da competição?</h1>
+            </div>
+
+            <form class="pergunta">
+            <div class="resposta">
+                <span>Real Madrid</span>
+                <input type="radio" name="pergunta1" value="correta" />
+                <br/>
+                </div>
+            <div class="resposta">
+                <span>Barcelona</span>
+                <input type="radio" name="pergunta1" value="incorreta" />
+                <br/>
+            </div>
+            <div class="resposta">
+                <span>Liverpool</span>
+                <input type="radio" name="pergunta1" value="incorreta" />
+                <br/>
+            </div>
+            </form>
+
+
+            <div class="title">
+                <h1>Quem é o maior artilheiro dessa competição?</h1>
+            </div>
+
+            <form class="pergunta">
+                <div class="resposta">
+                    <span>Messi</span>
+                    <input type="radio" name="pergunta1" value="incorreta" />
+                    <br/>
+                    </div>
+                <div class="resposta">
+                    <span>Neymar</span>
+                    <input type="radio" name="pergunta1" value="incorreta" />
+                    <br/>
+                </div>
+                <div class="resposta">
+                    <span>Cristiano Ronaldo</span>
+                    <input type="radio" name="pergunta1" value="correta" />
+                    <br/>
+                </div>
+            </form>
+
+            <div class="title">
+                <h1>Quem foi o primeiro campeão?</h1>
+            </div>
+
+            <form class="pergunta">
+                <div class="resposta">
+                    <span>Milan</span>
+                    <input type="radio" name="pergunta1" value="incorreta" />
+                    <br/>
+                    </div>
+                <div class="resposta">
+                    <span>Real Madrid</span>
+                    <input type="radio" name="pergunta1" value="correta" />
+                    <br/>
+                </div>
+                <div class="resposta">
+                    <span>Benfica</span>
+                    <input type="radio" name="pergunta1" value="incorreta" />
+                    <br/>
+                </div>
+                <div class="title">
+                    <h1>Quem foi o último campeão?</h1>
+                </div>
+            </form>
+    
+                <form class="pergunta">
+                    <div class="resposta">
+                        <span>Liverpool</span>
+                        <input type="radio" name="pergunta1" value="incorreta" />
+                        <br/>
+                        </div>
+                    <div class="resposta">
+                        <span>Chelsea</span>
+                        <input type="radio" name="pergunta1" value="correta" />
+                        <br/>
+                    </div>
+                    <div class="resposta">
+                        <span>Milan</span>
+                        <input type="radio" name="pergunta1" value="incorreta" />
+                        <br/>
+                    </div>
+                    <div class="title">
+                        <h1>Quem é o Brasileiro com mais gols?</h1>
+                    </div>
+                </form>
+        
+                    <form class="pergunta">
+                        <div class="resposta">
+                            <span>Neymar</span>
+                            <input type="radio" name="pergunta1" value="correta" />
+                            <br/>
+                            </div>
+                        <div class="resposta">
+                            <span>Kaká</span>
+                            <input type="radio" name="pergunta1" value="incorreta" />
+                            <br/>
+                        </div>
+                        <div class="resposta">
+                            <span>Ronaldo</span>
+                            <input type="radio" name="pergunta1" value="incorreta" />
+                            <br/>
+                        </div>
+                    </form>
+            
+        </div>
+        <script>
+            //1) Colocar o span e input type radio dentro de uma div para preencher toda a linha;
+            //2) Recuperar o elemento pai da opção correta ou incorreta e aplicar a devida cor;
+            //3) Depois de selecionado a resposta deixar o botão desabilitado
+
+
+
+            var elementos = document.querySelectorAll('[type=radio]');
+
+            for(var i = 0; i < elementos.length; i++){
+                elementos[i].addEventListener('change',function(e){
+                    let marcado = e.target.value;
+                    if(marcado == "correta"){
+                        
+                    let parentNode = e.target.parentNode;
+                    parentNode.style.backgroundColor = 'green';
+
+                    let els = parentNode.parentNode.querySelectorAll('[type=radio]');
+
+                    for(var n = 0; n < els.length; n++){
+                        els[n].disabled = true;
+                    }
+                        
+                    }else if(marcado == "incorreta"){
+                    let parentNode = e.target.parentNode;
+                    parentNode.style.backgroundColor = 'red';
+
+                    let els = parentNode.parentNode.querySelectorAll('[type=radio]');
+
+                    for(var n = 0; n < els.length; n++){
+                        els[n].disabled = true;
+                    }
+
+                    let correta = parentNode.parentNode.querySelector('[value=correta]');
+                    correta.parentNode.style.backgroundColor = 'green';
+
+
+                    }
+                })
+            }
+        </script>
+
+    </body>
+</html>
